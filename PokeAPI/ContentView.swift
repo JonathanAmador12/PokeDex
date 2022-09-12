@@ -9,13 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            Color("primary")
+                .ignoresSafeArea()
+            PokeDex()
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.dark)
+            .previewInterfaceOrientation(.portraitUpsideDown)
     }
 }
