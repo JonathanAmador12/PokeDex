@@ -8,14 +8,27 @@
 import Foundation
 
 class PokemonService {
-    func getPokemon(handler: @escaping (Result<PokemonPaginator, APIError>)->Void){
+    func getPokemon(offset: Int, limit: Int, handler: @escaping (Result<PokemonPaginator, APIError>)->Void){
         var result: Result<PokemonPaginator, APIError>
         
-        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon/")else{
-            result = .failure(APIError.badUrl)
+        
+        guard var urlComponets = URLComponents(string: "https://pokeapi.co/api/v2/pokemon/") else{
+            return
+            
+        }
+        
+        let params: [URLQueryItem] = [
+            URLQueryItem(name: "offset", value: String(offset)),
+            URLQueryItem(name: "limit", value: String(limit))
+        ]
+        urlComponets.queryItems = params
+        
+        guard let url = urlComponets.url else{
+            result = .failure(.badUrl)
             handler(result)
             return
         }
+        
         print("arnol")
         
         var request = URLRequest(url: url)
