@@ -66,9 +66,7 @@ class PokemonViewModel: ObservableObject {
     }
     
     func getPokemonImage(name: String) -> URL?{
-        
         var image: URL?
-        
         if let pokemon = nameToData[name]{
             image = URL(string: pokemon.sprites.frontShiny)
         }
@@ -89,6 +87,14 @@ class PokemonViewModel: ObservableObject {
             offset = offset + limit
             getPokemon()
         }
+    }
+    
+    func PokemonDetails(name: String) -> Pokemon? {
+        var allPokemon: Pokemon?
+        if let pokemon = nameToData[name]{
+            allPokemon = pokemon
+        }
+        return allPokemon
     }
     
 }
