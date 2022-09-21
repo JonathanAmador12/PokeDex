@@ -11,4 +11,15 @@ struct Pokemon: Identifiable, Decodable {
     var id: Int
     var name: String
     var sprites: Sprite
+    var types: [PokemonTypeSlot]
+    var stats: [Stats]
+}
+
+struct PokemonTypeSlot: Decodable, Hashable {
+    var slot: Int
+    var type: PokemonType
+}
+
+struct PokemonType: Decodable, Hashable{
+    var name: String
 }
