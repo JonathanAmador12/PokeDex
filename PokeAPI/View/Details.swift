@@ -83,23 +83,26 @@ struct Details: View {
                                     )
                             )
                     }
-                    HStack {
-                        VStack(alignment: .leading, spacing: 25){
-                            ForEach(pokemon.stats, id: \.self) { stat in
-                                HStack {
-                                    Text(stat.stat.name.capitalized)
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                    Spacer()
-                                    Text("\(stat.baseStats)")
-                                        .font(.title3)
-                                        .fontWeight(.bold)
+                    ScrollView {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 25){
+                                ForEach(pokemon.stats, id: \.self) { stat in
+                                    HStack {
+                                        Text(stat.stat.name.capitalized)
+                                            .font(.title3)
+                                            .fontWeight(.bold)
+                                        Spacer()
+                                        Text("\(stat.baseStats)")
+                                            .font(.title3)
+                                            .fontWeight(.bold)
+                                    }
                                 }
                             }
+                            Spacer()
                         }
-                        Spacer()
+                        .padding()
+                        Evolutions()
                     }
-                    .padding()
                     Spacer()
                 }
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
@@ -110,7 +113,10 @@ struct Details: View {
             .padding(.horizontal, 25)
         }
     }
+    
+    // funcion para optener el color
     func getTypeColor(name: String) -> Color {
+        
         var color: Color = .black
         
         if let colorType = colores[name]{
