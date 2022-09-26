@@ -13,6 +13,7 @@ struct Pokemon: Identifiable, Decodable {
     var sprites: Sprite
     var types: [PokemonTypeSlot]
     var stats: [Stats]
+    var species: Species
 }
 
 struct PokemonTypeSlot: Decodable, Hashable {
