@@ -12,6 +12,7 @@ struct Details: View {
     @Binding var isActive: Bool
     var pokemon : Pokemon
     
+    
     var colores: [String:Color] = [
         "electric": Color.yellow,
         "fire": Color.red,
@@ -101,7 +102,7 @@ struct Details: View {
                             Spacer()
                         }
                         .padding()
-                        Evolutions()
+                        Evolutions(especies: pokemon.species)
                     }
                     Spacer()
                 }
@@ -128,8 +129,10 @@ struct Details: View {
 
 struct Details_Previews: PreviewProvider {
     static var previews: some View {
+        
         let pokemon: Pokemon? = getDataFromMoclFile(mockFileNme: "Pikachu")
 
         Details(isActive: .constant(false), pokemon: pokemon!)
+            .environmentObject(PokemonViewModel())
     }
 }

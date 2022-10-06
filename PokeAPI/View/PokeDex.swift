@@ -76,7 +76,11 @@ struct PokeDex: View {
                     // second layer
                     if isActive{
                         if let detailPokemon = pokemon{
-                            Details(isActive: $isActive, pokemon: detailPokemon)
+                            Details(
+                                isActive: $isActive,
+                                pokemon: detailPokemon
+                            )
+                                .environmentObject(pokemonVM)
                         }
                       
                     }
