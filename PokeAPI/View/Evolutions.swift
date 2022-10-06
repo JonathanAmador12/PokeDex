@@ -6,31 +6,47 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct Evolutions: View {
+    var especies: Species
+    @EnvironmentObject var pokemonVm: PokemonViewModel
+    @ObservedObject var especiesviewModel = EspeciesViewModel()
+    
     var body: some View {
         VStack {
-            HStack{
-                RoundedRectangle(cornerRadius: 30)
-                    .frame(width: 100, height: 100)
-                Spacer()
-                VStack(alignment: .leading, spacing: 10){
-                    Text("number")
-                    Text("name of evolution")
+            ForEach(especiesviewModel.evolutions, id: \.self) { name in
+                HStack{
+                    
+                    KFImage(
+                        pokemonVm.getPokemonImage(name: name)
+                    )
+                    Spacer()
+                    VStack(alignment: .leading, spacing: 10){
+                        Text(name)
+                    }
                 }
+                .padding(.horizontal, 90)
+                .overlay{
+                    RoundedRectangle(cornerRadius: 80)
+                        .stroke(style: .init())
+                        .padding(.horizontal, 40)
+                }
+
             }
-            .padding(.horizontal, 90)
-            .overlay{
-                RoundedRectangle(cornerRadius: 80)
-                    .stroke(style: .init())
-                    .padding(.horizontal, 40)
-            }
+        }
+        .onAppear{
+            especiesviewModel.getEspeciesVm(url: especies.url)
         }
     }
 }
 
 struct Evolutions_Previews: PreviewProvider {
     static var previews: some View {
-        Evolutions()
+        
+        let pokemonSpecies = Species(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon-species/1/")
+        
+        Evolutions(especies: pokemonSpecies)
+            .environmentObject(PokemonViewModel())
     }
 }

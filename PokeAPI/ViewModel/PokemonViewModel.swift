@@ -68,15 +68,17 @@ class PokemonViewModel: ObservableObject {
     func getPokemonImage(name: String) -> URL?{
         var image: URL?
         if let pokemon = nameToData[name]{
+            
             image = URL(string: pokemon.sprites.frontShiny)
+        } else {
+            getMissingImage(name: name)
+            
         }
-        
 //        for pokemon in pokemos {
 //            if pokemon.name == name{
 //                image = URL(string: pokemon.sprites.frontShiny)
 //            }
 //        }
-        
         return image
     }
     
@@ -95,6 +97,20 @@ class PokemonViewModel: ObservableObject {
             allPokemon = pokemon
         }
         return allPokemon
+    }
+    
+    func getMissingImage(name: String) {
+        let serviceMissingImage = ServiceMissingImage()
+        serviceMissingImage.getMissingImage(name: name) {[weak self] result in
+            switch result{
+            case .success(let missPokemon):
+                DispatchQueue.main.async {
+                    self?.nameToData[name] = missPokemon
+                }
+            case .failure(let error):
+                print("\(error)")
+            }
+        }
     }
     
 }

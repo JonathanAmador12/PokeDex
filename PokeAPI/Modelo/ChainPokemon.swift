@@ -7,18 +7,31 @@
 
 import Foundation
 
-struct ChainPokemon: Identifiable {
+struct ChainPokemon: Identifiable, Decodable {
     var id: Int
     var chain: EvolutionNode
-}
-
-struct EvolutionNode {
-    var evolvesTo: [EvolutionNode]
-    var species: PokemonSpeciesNode
+    
     
 }
 
-struct PokemonSpeciesNode {
+struct EvolutionNode: Decodable {
+    var evolvesTo: [EvolutionNode]
+    var species: PokemonSpeciesNode
+    
+    enum CodingKeys: String, CodingKey {
+        case evolvesTo = "evolves_to"
+        case species
+    }
+    
+    init(from decoder: Decoder) throws {
+        let conteiner = try decoder.container(keyedBy: CodingKeys.self)
+        self.evolvesTo = try conteiner.decode([EvolutionNode].self, forKey: .evolvesTo)
+        self.species = try conteiner.decode(PokemonSpeciesNode.self, forKey: .species)
+    }
+    
+}
+
+struct PokemonSpeciesNode: Decodable {
     var name: String
     var url: String
 }
