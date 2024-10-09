@@ -40,26 +40,25 @@ struct PokeDex: View {
                         .padding()
                         .background(Color("primary"))
                         ScrollView {
-                            if let pokemon = pokemonVM.pokemonList{
-                                LazyVGrid(columns: formaGrid, spacing: 8) {
-                                    ForEach(pokemon, id: \.self) { pokemon in
-                                        VStack(spacing: 30) {
-                                            KFImage(pokemonVM.getPokemonImage(name: pokemon.name))
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 100, height: 100)
-                                                .foregroundColor(.red)
-                                            Text("\(pokemon.name)")
-                                        }
-                                        .padding(.bottom, 30)
-                                        
-                                        .onTapGesture(count: 1) {
-                                            isActive = true
-                                            self.pokemon = pokemonVM.PokemonDetails(name: pokemon.name)
-                                        }
-                                        .onAppear{
-                                            pokemonVM.loadMoreData(name: pokemon.name)
-                                        }
+                            
+                            LazyVGrid(columns: formaGrid, spacing: 8) {
+                                ForEach(pokemonVM.pokemonList, id: \.self) { pokemon in
+                                    VStack(spacing: 30) {
+                                        KFImage(pokemonVM.getPokemonImage(name: pokemon.name))
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 100, height: 100)
+                                            .foregroundColor(.red)
+                                        Text("\(pokemon.name)")
+                                    }
+                                    .padding(.bottom, 30)
+                                    
+                                    .onTapGesture(count: 1) {
+                                        isActive = true
+                                        self.pokemon = pokemonVM.PokemonDetails(name: pokemon.name)
+                                    }
+                                    .onAppear{
+                                        pokemonVM.loadMoreData(name: pokemon.name)
                                     }
                                 }
                             }
