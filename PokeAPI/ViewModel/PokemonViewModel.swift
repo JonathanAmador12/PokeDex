@@ -48,7 +48,7 @@ class PokemonViewModel: ObservableObject {
     
     // we need to create a new funcion
     
-    func getPokemonByURL(url: URL, dispatchGroud: DispatchGroup){
+    func getPokemonByURL(url: URL, dispatchGroud: DispatchGroup) {
         dispatchGroud.enter()
         let service = ServiceImage()
         service.getPokemon(url: url) {[weak self] result in

@@ -29,15 +29,12 @@ class PokemonService {
             return
         }
         
-        print("arnol")
-        
         var request = URLRequest(url: url)
-        print("arnol 2")
+        
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             var result: Result<PokemonPaginator, APIError>
-            print("arnol 3")
             
             guard let response = response as? HTTPURLResponse else{
                 return
@@ -51,17 +48,17 @@ class PokemonService {
                 result = .failure(.notAutorized)
                 handler(result)
             }
-            print("arnol 4")
+            
             guard let jsonData = data else{
                 return
             }
-            print("arnol 5")
+            
             guard let pokemonPaginador = try? JSONDecoder().decode(PokemonPaginator.self, from: jsonData) else{
                 result = .failure(.badDecode)
                 handler(result)
                 return
             }
-            print("arnol 6")
+            
             result = .success(pokemonPaginador)
             handler(result)
             
@@ -70,3 +67,4 @@ class PokemonService {
         
     }
 }
+
