@@ -30,6 +30,7 @@
 		B4BB7F8728DE564800C07810 /* Species.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB7F8628DE564800C07810 /* Species.swift */; };
 		B4BB7F8928DE5B0F00C07810 /* CaracterOfPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB7F8828DE5B0F00C07810 /* CaracterOfPokemon.swift */; };
 		B4BB7F8B28DEDFA100C07810 /* ChainPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB7F8A28DEDFA100C07810 /* ChainPokemon.swift */; };
+		B4BC318D2D72D0DE00CE48F6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4BC318C2D72D0DE00CE48F6 /* Launch Screen.storyboard */; };
 		B4D150AA28E24FDB00B06F42 /* especies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D150A928E24FDB00B06F42 /* especies.swift */; };
 		B4D150AC28E265D200B06F42 /* especiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D150AB28E265D200B06F42 /* especiesViewModel.swift */; };
 		B4D150AE28E27A4700B06F42 /* ServiceChainEvolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D150AD28E27A4700B06F42 /* ServiceChainEvolution.swift */; };
@@ -59,6 +60,8 @@
 		B4BB7F8628DE564800C07810 /* Species.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Species.swift; sourceTree = "<group>"; };
 		B4BB7F8828DE5B0F00C07810 /* CaracterOfPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaracterOfPokemon.swift; sourceTree = "<group>"; };
 		B4BB7F8A28DEDFA100C07810 /* ChainPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainPokemon.swift; sourceTree = "<group>"; };
+		B4BC318C2D72D0DE00CE48F6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		B4BC318E2D72D1F300CE48F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B4D150A928E24FDB00B06F42 /* especies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = especies.swift; sourceTree = "<group>"; };
 		B4D150AB28E265D200B06F42 /* especiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = especiesViewModel.swift; sourceTree = "<group>"; };
 		B4D150AD28E27A4700B06F42 /* ServiceChainEvolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceChainEvolution.swift; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 		B4A2CEC328C1AE5100FB1A96 /* PokeAPI */ = {
 			isa = PBXGroup;
 			children = (
+				B4BC318E2D72D1F300CE48F6 /* Info.plist */,
 				B480A12F28D53E9E003C003E /* Mocks */,
 				B486C45A28C2DCAA004651CD /* View */,
 				B4A2CED628C1D61A00FB1A96 /* ViewModel */,
@@ -155,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				B4A2CED728C1D6F300FB1A96 /* ServicePokemon.swift */,
+				B4BC318C2D72D0DE00CE48F6 /* Launch Screen.storyboard */,
 				B410617528C6AC7600884E16 /* ServiceImage.swift */,
 				B4D150A928E24FDB00B06F42 /* especies.swift */,
 				B4D150AD28E27A4700B06F42 /* ServiceChainEvolution.swift */,
@@ -238,6 +243,7 @@
 			files = (
 				B4A2CECC28C1AE5200FB1A96 /* Preview Assets.xcassets in Resources */,
 				B480A13128D53EC2003C003E /* Pikachu.json in Resources */,
+				B4BC318D2D72D0DE00CE48F6 /* Launch Screen.storyboard in Resources */,
 				B4A2CEC928C1AE5200FB1A96 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,8 +405,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PokeAPI/Preview Content\"";
+				DEVELOPMENT_TEAM = 9SM8FHLJFG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokeAPI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -427,8 +435,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PokeAPI/Preview Content\"";
+				DEVELOPMENT_TEAM = 9SM8FHLJFG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokeAPI/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
